@@ -140,7 +140,7 @@ export async function getServerSideProps(ctx) {
   if (!session) {
     return {
       redirect: {
-        destination: '/api/auth/signin?callbackUrl=https://mynotes-bay.vercel.app',
+        destination: 'https://mynotes-bay.vercel.app/api/auth/signin?callbackUrl=https://mynotes-bay.vercel.app',
         permanent: false
       }
     }
