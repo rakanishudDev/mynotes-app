@@ -8,7 +8,7 @@ import styles from '../../styles/Notes.module.css'
 import { useRouter } from 'next/router'
 
 
-const notes = ({data}) => {
+const Notes = ({data}) => {
   const {data: session, status} = useSession()
   const [myNotes, setMyNotes] = useState([])
   const [newNoteInProgress, setNewNoteInProgress] = useState(false)
@@ -77,7 +77,7 @@ const notes = ({data}) => {
   )
 }
 
-export default notes
+export default Notes
 
 
 export async function getServerSideProps(ctx) {

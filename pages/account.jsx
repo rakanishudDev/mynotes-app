@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/react'
 import React from 'react'
 import { authOptions } from './api/auth/[...nextauth]'
 
-const account = () => {
+const Account = () => {
     const {data: session, status} = useSession()
     console.log(session)
   return (
@@ -11,7 +11,7 @@ const account = () => {
   )
 }
 
-export default account
+export default Account
 
 export async function getServerSideProps(ctx) {
     const session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
