@@ -18,7 +18,7 @@ const Nav = () => {
                   </a></Link>
             </li>)}
             {!session && status !== 'authenticated' && (
-              <li><Link href="/api/auth/signin?callbackUrl=http://localhost:3000"><a>
+              <li><Link href="/api/auth/signin?callbackUrl=https://mynotes-bay.vercel.app"><a>
                     Sign In
                   </a></Link></li>
             )}

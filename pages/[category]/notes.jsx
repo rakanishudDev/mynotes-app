@@ -86,7 +86,7 @@ export async function getServerSideProps(ctx) {
   let data;
   if (session) {
     try {
-      const res = await fetch(`http://localhost:3000/api/notes/${session.user.id}/${categoryName}`)
+      const res = await fetch(`https://mynotes-bay.vercel.app/${session.user.id}/${categoryName}`)
       data = await res.json()
     } catch(err) {
       console.log(err)
@@ -95,7 +95,7 @@ export async function getServerSideProps(ctx) {
   if (!session) {
     return {
       redirect: {
-        destination: "/api/auth/signin?callbackUrl=http://localhost:3000",
+        destination: "/api/auth/signin?callbackUrl=https://mynotes-bay.vercel.app",
         permanent: false
       }
     }
