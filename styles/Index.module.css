@@ -1,0 +1,58 @@
+.notecardsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+.addSvg {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+.pageContainer {
+    width: 100%;
+}
+.createCategoryContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.leftSide {
+    margin: 1rem;
+    width: 400px;
+
+}
+.categoryContainer {
+
+}
+.categoryBox  {
+    width: 300px;
+    padding: 6px 6px 6px 16px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: rgba(255, 255, 255, 0.5) 1px solid;
+    transition: all 0.2s ease-out;
+}
+.categoryBox:hover {
+    margin-left: 10px;
+    transform: scale(1.05)
+}
+.categoryName {
+    margin: 0;
+}
+.inputCategory {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 2px;
+}
+.categoryBoxContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+.editContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}

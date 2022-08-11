@@ -1,0 +1,35 @@
+.pageContainer {
+    width: 100%;
+}
+.topContainer {
+    /* display: flex;
+    align-items: center; */
+}
+.categoryNameBox {
+    display: flex;
+    justify-content: center;
+}
+.categoryNameBox h2 {
+    font-family: "Lucida Handwriting", cursive;
+    margin: 1rem 0 0 0;
+    padding: 0 8px 4px 8px;
+    
+}
+.notecardsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+.addSvg {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+.createCategoryContainer {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

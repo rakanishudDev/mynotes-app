@@ -1,0 +1,67 @@
+https://github.com/vercel/next.js/blob/canary/examples/with-mongodb/lib/mongodb.js
+https://www.mongodb.com/developer/languages/javascript/nextjs-with-mongodb/
+https://www.mongodb.com/developer/languages/javascript/nextjs-building-modern-applications/#connecting-our-application-to-mongodb
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBn2T8_NocOWtlhM16iVzxngtqRu37yS5s",
+  authDomain: "notes-171c6.firebaseapp.com",
+  projectId: "notes-171c6",
+  storageBucket: "notes-171c6.appspot.com",
+  messagingSenderId: "952698951692",
+  appId: "1:952698951692:web:5c617fbaa798b3b0047629"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+npm i firebase
+
+
+
+//api/notes/index.js =>
+//  handler.put - ei muuda arrays elementi, ei savei updatedNote
+
+//notecard delete
+//category delete
+
+notes are not saving correcly in database,
+overwrites all categories and deletes notes in others categories
+
+
+
+
+
+5 Projects You Can Build In A Week
+https://www.youtube.com/watch?v=oluY633rkgI
+#1 - 0:41 - Web application using Api 
+#2 - 2:13 - Brochure site
+#3 - 4:06 - E-commerce site
+#4 - 6:23 - Personal Portfolio
+#5 - 7:44 - Simple game
+
+4 common mistakes when using fetch
+1. Assuming that the promise rejects on HTTP error statuses
+2. Forgetting to include credentials
+3. Forgetting to set the Content-Type to application/json when POSTing JSON
+4. Manually writing out complicated query params in a string
+
+
+https = https://github.com/rakanishudDev/P-notes-app.git
+create a new repository on the command line
+  echo "# P-notes-app" >> README.md
+  git init
+  git add README.md
+  git commit -m "first commit"
+  git branch -M main
+  git remote add origin https://github.com/rakanishudDev/P-notes-app.git
+  git push -u origin main
+or push an existing repository from the command line
+  git remote add origin https://github.com/rakanishudDev/P-notes-app.git
+  git branch -M main
+  git push -u origin main
+
