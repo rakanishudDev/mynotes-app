@@ -19,16 +19,42 @@ const Layout = ({children}) => {
         </main>
 
         <footer className={styles.footer}>
-            <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            >
-            Powered by{' '}
-            <span className={styles.logo}>
-                <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-            </span>
-            </a>
+            <div className={styles.footerLinkContainer}>
+                <a
+                href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                Powered by{' '}
+                <span className={styles.logo}>
+                    <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+                </span>
+                </a>
+            </div>
+            <div className={styles.footerLinkContainer}>
+                <a
+                href="https://github.com/rakanishudDev/mynotes-app"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                Github repo{' '}
+                <span className={styles.logo}>
+                    <Image src="/github.svg" alt="github Logo" width={20} height={20} />
+                </span>
+                </a>
+            </div>
+            <div className={styles.footerLinkContainer}>
+                <a
+                href="https://www.mongodb.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                MongoDB{' '}
+                <span className={styles.logo}>
+                    <Image src="/mongodb.svg" alt="mongodb Logo" width={20} height={20} />
+                </span>
+                </a>
+            </div>
         </footer>
     </div>
   )

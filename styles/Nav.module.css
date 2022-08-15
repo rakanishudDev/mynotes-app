@@ -21,3 +21,8 @@
     border-bottom: rgba(255, 255, 255, 0.5) 1px solid;
     box-shadow: white 1px 1px 3px;
 }
+.logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}

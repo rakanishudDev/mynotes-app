@@ -23,14 +23,7 @@ npm i firebase
 
 
 
-//api/notes/index.js =>
-//  handler.put - ei muuda arrays elementi, ei savei updatedNote
-
-//notecard delete
-//category delete
-
-notes are not saving correcly in database,
-overwrites all categories and deletes notes in others categories
+//openedNotecard midSector and textarea messed up 12.08.22
 
 
 

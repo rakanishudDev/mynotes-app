@@ -10,6 +10,8 @@ export default function Home({data}) {
   const [categoryName, setCategoryName] = useState('')
   const [categories, setCategories] = useState()
   const [edit, setEdit] = useState(false);
+  const [activeCategory, setActiveCategory] = useState(null);
+
 
   const {data: session, status} = useSession();
 
@@ -88,6 +90,14 @@ export default function Home({data}) {
     setEdit(false)
   }
 
+  const mouseEnter = (cid) => {
+    setActiveCategory(cid)
+    setEdit(true)
+  }
+  const mouseLeave = () => {
+    setEdit(false)
+    setActiveCategory(null)
+  }
   useEffect(() => {
     setCategories([...data])
   }, [data])
@@ -104,23 +114,22 @@ export default function Home({data}) {
         <div className={styles.categoryContainer}>
           {categories && categories.map(category => {
             return (
-              <div key={category.categoryId} className={styles.categoryBoxContainer}>
-                <div className={styles.categoryBox}>
-                  <Link href={`/${category.categoryId}/notes`}><a><h3 className={styles.categoryName}>{category.categoryName}</h3></a></Link>
-                </div>
-                {edit && <img onClick={() => onDelete(category.categoryId)} className="cursor-pointer" height="20px" width="20px" src="/close.svg" alt="delete" />}
+              <div key={category.categoryId} className={styles.categoryBoxContainer} onMouseLeave={mouseLeave} onMouseEnter={() => mouseEnter(category.categoryId)}>
+                <Link href={`/${category.categoryId}/notes`}>
+                  <div className={styles.categoryBox}>
+                    <a><h3 className={styles.categoryName}>{category.categoryName}</h3></a>
+                  </div>
+                </Link>
+                {edit && activeCategory === category.categoryId && ( <div className={styles.editBox}>
+                <img className="cursor-pointer" width="20px" height="20px" src="/edit.svg" alt="edit" />
+                <img onClick={() => onDelete(category.categoryId)} className="cursor-pointer" height="20px" width="20px" src="/close.svg" alt="delete" />
+                </div>)}
+                
               </div>
             )
           })}
         </div>
-        {categories && categories.length !== 0 && (
-        <div className={styles.editContainer} >
-          <div onClick={() => setEdit(!edit)} className={styles.editContainer + " cursor-pointer"}>
-            <img className="cursor-pointer" width="20px" height="20px" src="/edit.svg" alt="edit" />
-            <p>Options</p>
-          </div>
-        </div>
-        )}
+        
       </div>
     </div>
   )
@@ -131,7 +140,7 @@ export async function getServerSideProps(ctx) {
   let data;
   if (session) {
     try {
-      const res = await fetch('https://mynotes-bay.vercel.app/api/account/' + session.user.id)
+      const res = await fetch(process.env.ABSOLUTE_URL + '/api/account/' + session.user.id)
       data = await res.json()
     } catch(err) {
       console.log(err)
@@ -140,7 +149,7 @@ export async function getServerSideProps(ctx) {
   if (!session) {
     return {
       redirect: {
-        destination: 'https://mynotes-bay.vercel.app/api/auth/signin?callbackUrl=https://mynotes-bay.vercel.app',
+        destination: process.env.ABSOLUTE_URL + '/api/auth/signin?callbackUrl=https://mynotes-bay.vercel.app',
         permanent: false
       }
     }

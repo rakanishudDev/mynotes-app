@@ -1,22 +1,35 @@
-.notesCard {
+.componentContainer {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+.container {
+    position: absolute;
+    display: flex;
+    height: 90vh;
+    margin: 0;
+}
+.notecardContainer {
+    box-sizing: content-box;
     display: flex;
     flex-direction: column;
     /* background-color: rgb(83, 77, 77); */
     /* background-color: rgb(69, 63, 63); */
     background-color: rgb(67, 67, 67);
 
-    width: 450px;
-    height: 350px;
     border: white 1px solid;
-    border-radius: 5px;
-    box-shadow:rgb(0, 0, 0) 4px 4px 8px;
+    width: 800px;
+    height: 100%;
+    z-index: 65;
     opacity: 1;
-    animation-name: smooth;
-    animation-duration: 0.3s;
-}
-@keyframes smooth {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    transition: opacity 1s ease-out;
 }
 .topSector {
     display: flex;
@@ -26,13 +39,7 @@
     border-bottom: white 1px solid;
     min-height: 62px;
 }
-.topSectorTools {
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
-}
 .midSector {
-    padding: 1rem;
     height: 100%;
 }
 .bottomSector {
@@ -42,24 +49,30 @@
 .heading {
     font-weight: 600;
     font-size: 1.1rem;
-    cursor: pointer;
-}
-.textarea {
-    font-family: inherit;
-    font-size: inherit;
-    height: 100%;
-    background: none;
-    color: white;
-    width: 100%;
-    resize: none;
-}
-.textareaBorderNone {
-    border: none;
 }
 .headingInput {
     font-size: inherit;
     padding: 2.5px;
- 
+}
+.topSectorTools {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+.textarea {
+    padding: 1rem;
+    width: 800px;
+    height: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: rgb(67, 67, 67);
+    color: white;
+    border: white 1px solid;
+    resize: none;
+}
+.textareaBorderNone {
+    border: none;
+    background: none;
 }
 .saveButton {
     cursor: pointer;

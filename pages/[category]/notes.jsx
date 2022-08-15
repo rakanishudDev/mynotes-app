@@ -86,7 +86,7 @@ export async function getServerSideProps(ctx) {
   let data;
   if (session) {
     try {
-      const res = await fetch(`https://mynotes-bay.vercel.app/api/notes/${session.user.id}/${categoryName}`)
+      const res = await fetch(process.env.ABSOLUTE_URL + `/api/notes/${session.user.id}/${categoryName}`)
       data = await res.json()
     } catch(err) {
       console.log(err)
@@ -95,7 +95,7 @@ export async function getServerSideProps(ctx) {
   if (!session) {
     return {
       redirect: {
-        destination: "/api/auth/signin?callbackUrl=https://mynotes-bay.vercel.app",
+        destination: "/api/auth/signin?callbackUrl=" + process.env.ABSOLUTE_URL,
         permanent: false
       }
     }
