@@ -61,7 +61,9 @@ const Notes = ({data}) => {
         <h2> {'< ' + data.categoryName + ' >'}</h2>
         </div>
         <div className={styles.createCategoryContainer}>
-          <img onClick={onClickHandler} className={styles.addSvg} width="40px" height="40px" src="/add.svg" alt="add" />
+          <button className="buttonStyleNone">
+            <img onClick={onClickHandler} className={styles.addSvg} width="40px" height="40px" src="/add.svg" alt="add" />
+          </button>
           <h3>New Note</h3>
         </div>
       </div>

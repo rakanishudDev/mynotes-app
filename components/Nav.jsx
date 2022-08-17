@@ -18,19 +18,22 @@ const Nav = () => {
           <ul>
             {session && status === 'authenticated' && (<li>
             <Link href="/account"><a>
-                    {session.user.name}
+              <div className={styles.userAccountLink} >
+              {session.user.image && <img className={styles.userImage} width="30px" heighy="30px" src={session.user.image} />}
+                    <span>{session.user.name}</span>
+              </div>
                   </a></Link>
             </li>)}
             {!session && status !== 'authenticated' && (
               <li><Link href="/api/auth/signin?callbackUrl=https://mynotes-bay.vercel.app"><a>
-                    Sign In
+                    <span>Sign In</span>
                   </a></Link></li>
             )}
-            {session && status === 'authenticated' && (
+            {/* {session && status === 'authenticated' && (
               <li><Link href="/api/auth/signout"><a>
                     Sign Out
                   </a></Link></li>
-            )}
+            )} */}
           </ul>
         </nav>
     </nav>

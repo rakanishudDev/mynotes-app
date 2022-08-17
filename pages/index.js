@@ -110,7 +110,9 @@ export default function Home({data}) {
     <div className={styles.pageContainer}>
       <div className={styles.leftSide}>
         <div className={styles.createCategoryContainer}>
-          <img onClick={createNewCategory} className={styles.addSvg} width="40px" height="40px" src="/add.svg" alt="add" />
+          <button onClick={createNewCategory} className="buttonStyleNone">
+            <img className={styles.addSvg} width="40px" height="40px" src="/add.svg" alt="add" />
+          </button>
           <input onChange={(e) => setCategoryName(e.target.value)} value={categoryName} className={styles.inputCategory} type="text" placeholder="New Category" />
           
         </div>
@@ -124,7 +126,9 @@ export default function Home({data}) {
                   </div>
                 </Link>
                 {activeCategory === category.categoryId && ( <div className={styles.editBox}>
-                <img onClick={() => setEdit(!edit)} className="cursor-pointer" width="20px" height="20px" src="/edit.svg" alt="edit" />
+                <button onClick={() => setEdit(!edit)} className="buttonStyleNone">
+                  <img className="cursor-pointer" width="20px" height="20px" src="/edit.svg" alt="edit" />
+                </button>
                 { edit && activeCategory === category.categoryId && <img onClick={() => onDelete(category.categoryId)} className="cursor-pointer" height="20px" width="20px" src="/remove.svg" alt="delete" />}
                 </div>)}
                 
@@ -159,7 +163,7 @@ export async function getServerSideProps(ctx) {
   }
   return {
     props: {
-      session: JSON.parse(JSON.stringify(session)),
+      session: session,
       data: data
     }
   }

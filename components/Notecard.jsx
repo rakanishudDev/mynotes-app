@@ -73,8 +73,12 @@ const Notecard = ({notes, uid, categoryId, onDelete}) => {
         : 
         <p onClick={openNote} className={styles.heading}>{heading}</p>}
         <div className={styles.topSectorTools}>
-          <img className="cursor-pointer" onClick={onEdit} height="20px" width="20px" src="/edit.svg" alt="edit" />
-          <img className="cursor-pointer" onClick={onRemove} height="20px" width="20px" src="/close.svg" alt="close" />
+          <button className="buttonStyleNone">
+            <img className="cursor-pointer" onClick={onEdit} height="20px" width="20px" src="/edit.svg" alt="edit" />
+          </button>
+          <button className="buttonStyleNone">
+            <img className="cursor-pointer" onClick={onRemove} height="20px" width="20px" src="/close.svg" alt="close" />
+          </button>
         </div>
       </div>
       <div className={styles.midSector}>

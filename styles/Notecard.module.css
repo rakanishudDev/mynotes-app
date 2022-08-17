@@ -65,10 +65,11 @@
 .saveButton {
     cursor: pointer;
     font-size: 1rem;
-    padding: 0.2rem 1.2rem;
-    background: none;
+    padding: 0.3rem 1.2rem;
+    background-color: rgb(43, 40, 40);
     color: white;
-    border: none;
+    border: black 1px solid;
+    border-radius: 5px;
     font-weight: 600;
     display: flex;
     align-items: center;

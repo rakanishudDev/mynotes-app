@@ -12,17 +12,29 @@
     list-style: none;
     display: flex;
     gap: 1rem;
+    margin: 0;
 }
 .nav li {
     padding: 8px 10px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 .nav li:hover {
-    border-bottom: rgba(255, 255, 255, 0.5) 1px solid;
+
     box-shadow: white 1px 1px 3px;
 }
 .logoContainer {
     display: flex;
     align-items: center;
     gap: 0.6rem;
+}
+.userImage {
+    border: black 1px solid;
+    border-radius: 5px;
+}
+.userAccountLink {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;    
 }
