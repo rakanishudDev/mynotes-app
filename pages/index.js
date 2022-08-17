@@ -156,7 +156,7 @@ export async function getServerSideProps(ctx) {
   if (!session) {
     return {
       redirect: {
-        destination: process.env.ABSOLUTE_URL + '/api/auth/signin?callbackUrl=https://mynotes-bay.vercel.app',
+        destination: process.env.ABSOLUTE_URL + '/api/auth/signin?callbackUrl=' + process.env.ABSOLUTE_URL,
         permanent: false
       }
     }

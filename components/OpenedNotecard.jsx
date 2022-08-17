@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../styles/OpenedNotecard.module.css'
 
-const OpenedNotecard = ({notes, closeNotecard, onSave, onDeleteOpened}) => {
+const OpenedNotecard = ({notes, closeNotecard, uid, categoryId, onDeleteOpened, changeContentState}) => {
 
     const [heading, setHeading] = useState(notes.heading);
     const [text, setText] = useState(notes.text);
@@ -26,12 +26,35 @@ const OpenedNotecard = ({notes, closeNotecard, onSave, onDeleteOpened}) => {
     const onChangeHeading = (e) => {
       setHeading(e.target.value)
     }
-    const onEditSave = () => {
-      onSave({heading: heading, text: text})
+    const onEditSave = async () => {
+      if (text === '' || heading === '') {
+        return
+      }
+      const updatedNote = {
+        uid: uid,
+        categoryId: categoryId,
+        newNote: {
+          noteId: notes.noteId,
+          heading: heading,
+          text: text
+        }
+      }
+      console.log(updatedNote)
+      setEditOn(false)
+      try {
+        const updatedDoc = await fetch("/api/notes", {
+          method: "PUT",
+          body: JSON.stringify(updatedNote)
+        })
+        setHeading(heading)
+        setText(text)
+        changeContentState(heading, text)
+      } catch (err) {
+        console.log(err)
+      }
       setEditOn(false)
     }
-
-
+    
   return (
     <div onMouseDown={(e) => closeNotecard(e)} id="closingBg" className={styles.componentContainer}>
         <div className={styles.container}>

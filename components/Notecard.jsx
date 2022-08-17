@@ -24,8 +24,7 @@ const Notecard = ({notes, uid, categoryId, onDelete}) => {
   const onChangeHeading = (e) => {
     setHeading(e.target.value)
   }
-  const onSave = async (openedNote) => {
-    console.log('edited')
+  const onSave = async () => {
     if (text === '' || heading === '') {
       return
     }
@@ -34,10 +33,11 @@ const Notecard = ({notes, uid, categoryId, onDelete}) => {
       categoryId: categoryId,
       newNote: {
         noteId: notes.noteId,
-        heading: openedNote ? openedNote.heading : heading,
-        text: openedNote ? openedNote.text : text
+        heading: heading,
+        text: text
       }
     }
+    console.log(updatedNote)
     setEditOn(false)
     try {
       const updatedDoc = await fetch("/api/notes", {
@@ -63,10 +63,14 @@ const Notecard = ({notes, uid, categoryId, onDelete}) => {
     onDelete(notes.noteId)
     setIsNoteOpen(false)
   }
+  const changeContentState = (h, t) => {
+    setHeading(h)
+    setText(t)
+  }
 
   return (
     <div className={styles.notesCard}>
-      {isNoteOpen && <OpenedNotecard onDeleteOpened={onDeleteOpened} onSave={onSave} closeNotecard={closeNotecard} notes={notes} />}
+      {isNoteOpen && <OpenedNotecard changeContentState={changeContentState} uid={uid} categoryId={categoryId} onDeleteOpened={onDeleteOpened} closeNotecard={closeNotecard} notes={notes} />}
       <div className={styles.topSector}>
         {editOn ? 
         <input className={styles.headingInput} autoFocus type="text" placeholder="heading" onChange={onChangeHeading} value={heading} /> 
