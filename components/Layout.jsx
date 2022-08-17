@@ -33,18 +33,6 @@ const Layout = ({children}) => {
             </div>
             <div className={styles.footerLinkContainer}>
                 <a
-                href="https://github.com/rakanishudDev/mynotes-app"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                Github repo{' '}
-                <span className={styles.logo}>
-                    <Image src="/github.svg" alt="github Logo" width={20} height={20} />
-                </span>
-                </a>
-            </div>
-            <div className={styles.footerLinkContainer}>
-                <a
                 href="https://www.mongodb.com/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -52,6 +40,18 @@ const Layout = ({children}) => {
                 MongoDB{' '}
                 <span className={styles.logo}>
                     <Image src="/mongodb.svg" alt="mongodb Logo" width={20} height={20} />
+                </span>
+                </a>
+            </div>
+            <div className={styles.footerLinkContainer}>
+                <a
+                href="https://github.com/rakanishudDev/mynotes-app"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                Github repo{' '}
+                <span className={styles.logo}>
+                    <Image src="/github.svg" alt="github Logo" width={20} height={20} />
                 </span>
                 </a>
             </div>

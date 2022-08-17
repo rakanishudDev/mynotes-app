@@ -83,7 +83,7 @@ export default Notes
 export async function getServerSideProps(ctx) {
   const session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
   const categoryName = ctx.query.category
-  let data;
+  let data = [];
   if (session) {
     try {
       const res = await fetch(process.env.ABSOLUTE_URL + `/api/notes/${session.user.id}/${categoryName}`)
@@ -103,7 +103,7 @@ export async function getServerSideProps(ctx) {
   return {
     props: {
       session: session,
-      data: data && data
+      data: data
     }
   }
 }

@@ -20,10 +20,13 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 npm i firebase
+keskuse 4a 46 3 trepp
 
 
-
-//openedNotecard midSector and textarea messed up 12.08.22
+// /indez/ return props: {
+      session: JSON.parse(JSON.stringify(session)), mis pask see on ahti??
+      data: data && data
+    } 
 
 
 

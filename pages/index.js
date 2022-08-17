@@ -12,9 +12,9 @@ export default function Home({data}) {
   const [edit, setEdit] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
 
-
   const {data: session, status} = useSession();
 
+  // =====================================================
   const createCategoryFetch = async function(url, bodyData) {
     return new Promise( async (resolve, reject) => {
       try {
@@ -29,7 +29,8 @@ export default function Home({data}) {
     }
     }) 
   }
-  
+
+  // =====================================================
   const createNewCategory = async () => {
     //////
     if (categoryName === '') {
@@ -55,8 +56,10 @@ export default function Home({data}) {
     categories.unshift(newCategory)
     setCategories([...categories])
   }
-  
+
+  // =====================================================
   const onDelete = async (categoryid) => {
+    setIsRemove(false)
     // promise
     const deleteCategoryPromise = async (url) => {
       return new Promise(async (resolve, reject) => {
@@ -90,9 +93,9 @@ export default function Home({data}) {
     setEdit(false)
   }
 
+  // =====================================================
   const mouseEnter = (cid) => {
     setActiveCategory(cid)
-    setEdit(true)
   }
   const mouseLeave = () => {
     setEdit(false)
@@ -120,9 +123,9 @@ export default function Home({data}) {
                     <a><h3 className={styles.categoryName}>{category.categoryName}</h3></a>
                   </div>
                 </Link>
-                {edit && activeCategory === category.categoryId && ( <div className={styles.editBox}>
-                <img className="cursor-pointer" width="20px" height="20px" src="/edit.svg" alt="edit" />
-                <img onClick={() => onDelete(category.categoryId)} className="cursor-pointer" height="20px" width="20px" src="/close.svg" alt="delete" />
+                {activeCategory === category.categoryId && ( <div className={styles.editBox}>
+                <img onClick={() => setEdit(!edit)} className="cursor-pointer" width="20px" height="20px" src="/edit.svg" alt="edit" />
+                { edit && activeCategory === category.categoryId && <img onClick={() => onDelete(category.categoryId)} className="cursor-pointer" height="20px" width="20px" src="/remove.svg" alt="delete" />}
                 </div>)}
                 
               </div>
@@ -137,7 +140,7 @@ export default function Home({data}) {
 
 export async function getServerSideProps(ctx) {
   const session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
-  let data;
+  let data = [];
   if (session) {
     try {
       const res = await fetch(process.env.ABSOLUTE_URL + '/api/account/' + session.user.id)
@@ -157,7 +160,7 @@ export async function getServerSideProps(ctx) {
   return {
     props: {
       session: JSON.parse(JSON.stringify(session)),
-      data: data && data
+      data: data
     }
   }
 } 

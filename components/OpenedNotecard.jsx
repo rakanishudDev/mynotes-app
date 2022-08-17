@@ -1,28 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../styles/OpenedNotecard.module.css'
 
-const OpenedNotecard = ({notes, closeNotecard}) => {
+const OpenedNotecard = ({notes, closeNotecard, onSave, onDeleteOpened}) => {
 
     const [heading, setHeading] = useState(notes.heading);
     const [text, setText] = useState(notes.text);
     const [editOn, setEditOn] = useState(false);
+    const [isRemove, setIsRemove] = useState(false);
 
     const onEdit = () => {
         console.log({text, heading})
+        setIsRemove(false)
         setEditOn(!editOn)
     }
     const onDelete = () => {
         
     }
+    const onRemove = () => {
+      setEditOn(false)
+      setIsRemove(!isRemove)
+    }
     const onChangeText = (e) => {
     setText(e.target.value)
-  }
-  const onChangeHeading = (e) => {
-    setHeading(e.target.value)
-  }
-  const onSave = () => {
-
-  }
+    }
+    const onChangeHeading = (e) => {
+      setHeading(e.target.value)
+    }
+    const onEditSave = () => {
+      onSave({heading: heading, text: text})
+      setEditOn(false)
+    }
 
 
   return (
@@ -36,7 +43,7 @@ const OpenedNotecard = ({notes, closeNotecard}) => {
                   <p className={styles.heading}>{heading}</p>}
                   <div className={styles.topSectorTools}>
                       <img className="cursor-pointer" onClick={onEdit} height="20px" width="20px" src="/edit.svg" alt="edit" />
-                      <img className="cursor-pointer" onClick={() => onDelete(notes.noteId)} height="20px" width="20px" src="/close.svg" alt="close" />
+                      <img className="cursor-pointer" onClick={onRemove} height="20px" width="20px" src="/close.svg" alt="close" />
                   </div>
               </div>
               <div className={styles.midSector}>
@@ -44,7 +51,11 @@ const OpenedNotecard = ({notes, closeNotecard}) => {
               </div>
               {editOn && 
               <div className={styles.bottomSector}>
-                <button onClick={onSave} className={styles.saveButton} > <img height="20px" width="20px" src="/save.svg"/> Save</button>
+                <button onClick={onEditSave} className={styles.saveButton} > <img height="20px" width="20px" src="/save.svg"/> <p>Save</p></button>
+              </div>}
+              {isRemove && 
+              <div className={styles.bottomSector}>
+                <button onClick={onDeleteOpened} className={styles.removeButton} > <img height="20px" width="20px" src="/remove.svg"/><p> Remove</p></button>
               </div>}
           </div>
         </div>
