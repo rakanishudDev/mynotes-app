@@ -36,7 +36,7 @@ export default function Home({data}) {
     if (categoryName === '') {
       return
     }
-    //////
+    //
     const date = Date.now()
     const categoryId = Math.floor(Math.random() * 1000) + Date.now() + ''
 
@@ -46,20 +46,20 @@ export default function Home({data}) {
       date: date,
       categoryName: categoryName
     }
-    //////
+    //
     await Promise.all([
       createCategoryFetch('/api/account', newCategory),
       createCategoryFetch('/api/category/', newCategory)
     ]).catch(err => console.log(err))
     
-    //////
+    //
     categories.unshift(newCategory)
     setCategories([...categories])
   }
 
-  // =====================================================
+  // ===================================================== \\
   const onDelete = async (categoryid) => {
-    setIsRemove(false)
+    //setIsRemove(false)
     // promise
     const deleteCategoryPromise = async (url) => {
       return new Promise(async (resolve, reject) => {
